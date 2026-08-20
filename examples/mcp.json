@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "remote-agent-mcp": {
+      "type": "http",
+      "url": "http://127.0.0.1:9090/",
+      "headers": {
+        "Authorization": "Bearer your-token-here"
+      }
+    }
+  }
+}
