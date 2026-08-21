@@ -4,6 +4,28 @@ A Go-based [Model Context Protocol](https://modelcontextprotocol.io) (MCP) serve
 that exposes file and shell tools over **Streamable HTTP**, for remote machine
 troubleshooting by a local AI client.
 
+## Quick install
+
+Install the latest Linux release binary with a single command:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/alexwithdev/remote-agent-mcp/main/install.sh | sh
+```
+
+The script downloads the release binary, verifies its SHA256 checksum, and
+installs it to `/usr/local/bin` when writable, otherwise to `~/.local/bin`.
+Use `--prefix` to override the install directory.
+
+```sh
+./install.sh                 # install latest release
+./install.sh v1.2.3          # install a specific version
+./install.sh --prefix /opt/bin
+```
+
+> `install.sh` supports Linux only. For other platforms, download the matching
+> binary from the [releases](https://github.com/alexwithdev/remote-agent-mcp/releases)
+> page or use `go install remote-agent-mcp@latest`.
+
 ## Tools
 
 | Tool | Purpose |
