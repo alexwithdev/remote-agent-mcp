@@ -57,7 +57,7 @@ func (t *ToolSet) registerList(s *mcp.Server) {
 		Name:        "list",
 		Description: "List the contents of a directory (single level, including hidden files).",
 		Annotations: &mcp.ToolAnnotations{ReadOnlyHint: true},
-	}, t.list)
+	}, wrapTool(t.logger, "list", t.list))
 }
 
 func (t *ToolSet) list(ctx context.Context, req *mcp.CallToolRequest, args listArgs) (*mcp.CallToolResult, ListResult, error) {

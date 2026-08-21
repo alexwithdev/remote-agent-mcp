@@ -5,6 +5,7 @@ go 1.24.13
 require (
 	github.com/google/jsonschema-go v0.4.2
 	github.com/modelcontextprotocol/go-sdk v1.3.1
+	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 )
 
 require (

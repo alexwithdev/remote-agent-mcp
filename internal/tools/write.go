@@ -45,7 +45,7 @@ func (t *ToolSet) registerWrite(s *mcp.Server) {
 	mcp.AddTool(s, &mcp.Tool{
 		Name:        "write",
 		Description: "Create or overwrite a file, creating parent directories as needed.",
-	}, t.write)
+	}, wrapTool(t.logger, "write", t.write))
 }
 
 func (t *ToolSet) write(ctx context.Context, req *mcp.CallToolRequest, args writeArgs) (*mcp.CallToolResult, WriteResult, error) {

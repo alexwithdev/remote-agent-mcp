@@ -67,7 +67,7 @@ func (t *ToolSet) registerEdit(s *mcp.Server) {
 	mcp.AddTool(s, &mcp.Tool{
 		Name:        "edit",
 		Description: "Make a precise oldString→newString replacement in a file, optionally replacing all occurrences.",
-	}, t.edit)
+	}, wrapTool(t.logger, "edit", t.edit))
 }
 
 func (t *ToolSet) edit(ctx context.Context, req *mcp.CallToolRequest, args editArgs) (*mcp.CallToolResult, EditResult, error) {

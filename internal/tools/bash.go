@@ -137,7 +137,7 @@ func (t *ToolSet) registerBash(s *mcp.Server) {
 	mcp.AddTool(s, &mcp.Tool{
 		Name:        "bash",
 		Description: "Run a shell command in the working directory (tests, installs, lint, etc.).",
-	}, t.bash)
+	}, wrapTool(t.logger, "bash", t.bash))
 }
 
 func (t *ToolSet) bash(ctx context.Context, req *mcp.CallToolRequest, args bashArgs) (*mcp.CallToolResult, BashResult, error) {

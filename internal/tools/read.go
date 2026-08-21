@@ -94,7 +94,7 @@ func (t *ToolSet) registerRead(s *mcp.Server) {
 		Name:        "read",
 		Description: "Read a file's content with line-based offset/limit paging and automatic truncation.",
 		Annotations: &mcp.ToolAnnotations{ReadOnlyHint: true},
-	}, t.read)
+	}, wrapTool(t.logger, "read", t.read))
 }
 
 func (t *ToolSet) read(ctx context.Context, req *mcp.CallToolRequest, args readArgs) (*mcp.CallToolResult, ReadResult, error) {
