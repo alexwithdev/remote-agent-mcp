@@ -106,6 +106,12 @@ func RunCommand(ctx context.Context, shell, cwd, command string, timeout time.Du
 
 	cmd := exec.CommandContext(ctx, shell, "-c", command)
 	cmd.Dir = cwd
+	// WaitDelay bounds how long Wait waits for orphaned subprocesses to close
+	// the I/O pipes after the context is canceled. Without it, a shell that
+	// forks a child (e.g. dash's `sh -c "sleep 30"`) keeps the pipes open until
+	// the child exits, so a timed-out command can hang for the child's full
+	// lifetime instead of returning promptly.
+	cmd.WaitDelay = 1 * time.Second
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
